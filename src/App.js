@@ -5,7 +5,9 @@ import { Listbox } from "./components";
 const App = () => (
   <>
     <h1>Hello, World!!!</h1>
-    <Listbox options={["one", "two", "three"]} />
+    <Listbox
+      options={[{ label: "one", value: 1 }, { label: "two", value: 2 }]}
+    />
   </>
 );
 
