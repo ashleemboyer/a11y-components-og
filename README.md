@@ -2,6 +2,8 @@
 
 The purpose of this repository is to share what I've learned about creating accessible React components. It is not currently open source, but might be at some point in the future.
 
+If you're in interested in resources, my workflow, or the progress of this project, I'm putting together [a public Trello board](https://trello.com/b/nU9Zp4Iv/a11y-components) to keep myself organized. Feel free to peruse it!
+
 ## File Structure
 
 Several weeks ago, a friend recommended I check out the Shopify's [`polaris-react` repository](https://github.com/Shopify/polaris-react) when I was working on accessible modal dialogs. The way they've structured their files is 🌟 GORGEOUS 🌟 and it brings my soul joy. I _love_ an organized and functional file structure.
