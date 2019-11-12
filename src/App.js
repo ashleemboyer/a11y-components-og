@@ -14,6 +14,9 @@ const App = () => (
         { name: "four", value: 4 },
         { name: "five", value: 5 }
       ]}
+      onChange={value => {
+        console.log("Value is...", value);
+      }}
     />
   </div>
 );

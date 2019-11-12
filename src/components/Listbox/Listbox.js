@@ -14,7 +14,7 @@ const getIndexOfOption = element => {
   return -1;
 };
 
-const Listbox = ({ options, label }) => {
+const Listbox = ({ options, label, onChange }) => {
   const [expanded, setExpanded] = useState(false);
   const [indexOfSelectedOption, setIndexOfSelectedOption] = useState(-1);
 
@@ -24,11 +24,17 @@ const Listbox = ({ options, label }) => {
       ? `option_${options[indexOfSelectedOption].value}`
       : "";
 
+  const selectOption = indexOfOption => {
+    onChange(options[indexOfOption]);
+    setIndexOfSelectedOption(indexOfOption);
+  };
+
   const focusElement = element => {
-    const indexToSelect = getIndexOfOption(element);
-    if (indexToSelect >= 0) {
-      setIndexOfSelectedOption(indexToSelect);
-    }
+    element.className = "focused";
+  };
+
+  const defocusElement = element => {
+    element.className = "";
   };
 
   const focusFirstOption = () => {
@@ -36,7 +42,7 @@ const Listbox = ({ options, label }) => {
     const firstOption = listboxNode.querySelector('[role="option"]');
 
     if (firstOption) {
-      focusElement(firstOption, setIndexOfSelectedOption);
+      setIndexOfSelectedOption(0);
     }
   };
 
@@ -76,14 +82,14 @@ const Listbox = ({ options, label }) => {
               return (
                 <li
                   onClick={() => {
-                    setIndexOfSelectedOption(index);
                     setExpanded(false);
+                    selectOption(index);
                   }}
                   onMouseEnter={({ target }) => {
-                    target.className = "focused";
+                    focusElement(target);
                   }}
                   onMouseLeave={({ target }) => {
-                    target.className = "";
+                    defocusElement(target);
                   }}
                   className={index === indexOfSelectedOption ? "focused" : ""}
                   id={listItemId}
