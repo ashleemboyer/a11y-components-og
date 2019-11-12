@@ -6,7 +6,6 @@
 }
 
 .left-area {
-  box-sizing: border-box;
   display: inline-block;
   font-size: 1rem;
   vertical-align: top;
@@ -39,47 +38,53 @@
   color: green;
 }
 
+#exp_wrapper {
+  position: relative;
+}
+
 #exp_button {
-  border-radius: 0;
+  border: 1px solid grey;
+  border-radius: 6px;
   font-size: 1rem;
   text-align: left;
   padding: 5px 10px;
-  width: 150px;
+  width: 160px;
   position: relative;
 }
 
 #exp_button::after {
   width: 0;
   height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-top: 8px solid #aaa;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid grey;
   content: " ";
   position: absolute;
-  right: 5px;
+  right: 6px;
   top: 10px;
 }
 
 #exp_button[aria-expanded="true"]::after {
   width: 0;
   height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
   border-top: 0;
-  border-bottom: 8px solid #aaa;
+  border-bottom: 8px solid grey;
   content: " ";
   position: absolute;
-  right: 5px;
+  right: 6px;
   top: 10px;
 }
 
 #exp_elem_list {
-  border-top: 0;
+  border: 1px solid grey;
+  border-radius: 4px;
   max-height: 10em;
   overflow-y: auto;
   position: absolute;
   margin: 0;
-  width: 148px;
+  width: 160px;
 }
 
 .hidden {
