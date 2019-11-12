@@ -42,6 +42,11 @@
   position: relative;
 }
 
+#exp_elem {
+  display: block;
+  margin-bottom: 4px;
+}
+
 #exp_button {
   border: 1px solid grey;
   border-radius: 6px;
