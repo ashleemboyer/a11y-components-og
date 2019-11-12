@@ -5,30 +5,40 @@ import { Button } from "..";
 
 import "./Listbox.css";
 
-const focusElement = (element, setIndexOfSelectedOption) => {
-  if (element.id.startsWith("option_")) {
-    const indexToSelect = +element.id.substring("option_".length);
-    setIndexOfSelectedOption(indexToSelect);
+const getIndexOfOption = element => {
+  const testString = "option_";
+  if (element.id.startsWith(testString)) {
+    return +element.id.substring(testString.length);
   }
-};
 
-const focusFirstOption = setIndexOfSelectedOption => {
-  const listboxNode = document.getElementById("exp_elem_list");
-  const firstOption = listboxNode.querySelector('[role="option"]');
-
-  if (firstOption) {
-    focusElement(firstOption, setIndexOfSelectedOption);
-  }
+  return -1;
 };
 
 const Listbox = ({ options, label }) => {
   const [expanded, setExpanded] = useState(false);
   const [indexOfSelectedOption, setIndexOfSelectedOption] = useState(-1);
 
+  // TODO: this isn't very readable
   const ariaActiveDescendant =
     indexOfSelectedOption >= 0
       ? `option_${options[indexOfSelectedOption].value}`
       : "";
+
+  const focusElement = element => {
+    const indexToSelect = getIndexOfOption(element);
+    if (indexToSelect >= 0) {
+      setIndexOfSelectedOption(indexToSelect);
+    }
+  };
+
+  const focusFirstOption = () => {
+    const listboxNode = document.getElementById("exp_elem_list");
+    const firstOption = listboxNode.querySelector('[role="option"]');
+
+    if (firstOption) {
+      focusElement(firstOption, setIndexOfSelectedOption);
+    }
+  };
 
   return (
     <div className="listbox-area">
@@ -68,6 +78,12 @@ const Listbox = ({ options, label }) => {
                   onClick={() => {
                     setIndexOfSelectedOption(index);
                     setExpanded(false);
+                  }}
+                  onMouseEnter={({ target }) => {
+                    target.className = "focused";
+                  }}
+                  onMouseLeave={({ target }) => {
+                    target.className = "";
                   }}
                   className={index === indexOfSelectedOption ? "focused" : ""}
                   id={listItemId}
