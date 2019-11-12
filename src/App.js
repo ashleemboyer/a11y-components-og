@@ -6,6 +6,7 @@ const App = () => (
   <div style={{ maxWidth: 600, margin: "0 auto" }}>
     <h1>{"Currently showing the <Listbox> component"}</h1>
     <Listbox
+      label="Choose an element"
       options={[
         { label: "one", value: 1 },
         { label: "two", value: 2 },

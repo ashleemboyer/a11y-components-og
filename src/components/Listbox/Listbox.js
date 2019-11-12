@@ -5,7 +5,7 @@ import { Button } from "..";
 
 import "./Listbox.css";
 
-const getIndexOfOption = element => {
+const getIndexOfOption = ({ element, label }) => {
   const testString = "option_";
   if (element.id.startsWith(testString)) {
     return +element.id.substring(testString.length);
@@ -43,7 +43,7 @@ const Listbox = ({ options, label }) => {
   return (
     <div className="listbox-area">
       <div className="left-area">
-        <span id="exp_elem">Choose an element:</span>
+        <span id="exp_elem">{label}</span>
         <div id="exp_wrapper">
           <button
             aria-activedescendant={ariaActiveDescendant}
@@ -108,7 +108,8 @@ Listbox.propTypes = {
       label: PropTypes.string.isRequired,
       value: PropTypes.any.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  label: PropTypes.node.isRequired
 };
 
 export default Listbox;
