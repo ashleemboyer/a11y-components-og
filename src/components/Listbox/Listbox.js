@@ -5,24 +5,27 @@ import { Button } from "..";
 
 import "./Listbox.css";
 
+const optionIdStringPrefix = "option_";
+
 const getIndexOfOption = element => {
-  const testString = "option_";
-  if (element.id.startsWith(testString)) {
-    return +element.id.substring(testString.length);
+  if (element.id.startsWith(optionIdStringPrefix)) {
+    return +element.id.substring(optionIdStringPrefix.length);
   }
 
   return -1;
 };
 
+const generateOptionId = indexOfOption => {
+  if (indexOfOption < 0) {
+    return "";
+  }
+
+  return `${optionIdStringPrefix}${indexOfOption}`;
+};
+
 const Listbox = ({ options, label, onChange }) => {
   const [expanded, setExpanded] = useState(false);
   const [indexOfSelectedOption, setIndexOfSelectedOption] = useState(-1);
-
-  // TODO: this isn't very readable
-  const ariaActiveDescendant =
-    indexOfSelectedOption >= 0
-      ? `option_${options[indexOfSelectedOption].value}`
-      : "";
 
   const selectOption = indexOfOption => {
     onChange(options[indexOfOption]);
@@ -42,7 +45,7 @@ const Listbox = ({ options, label, onChange }) => {
     const firstOption = listboxNode.querySelector('[role="option"]');
 
     if (firstOption) {
-      setIndexOfSelectedOption(0);
+      selectOption(0);
     }
   };
 
@@ -52,7 +55,7 @@ const Listbox = ({ options, label, onChange }) => {
         <span id="exp_elem">{label}</span>
         <div id="exp_wrapper">
           <button
-            aria-activedescendant={ariaActiveDescendant}
+            aria-activedescendant={generateOptionId(indexOfSelectedOption)}
             aria-expanded={expanded}
             aria-haspopup="listbox"
             aria-labelledby="exp_elem exp_button"
@@ -78,7 +81,7 @@ const Listbox = ({ options, label, onChange }) => {
             className={expanded ? "" : "hidden"}
           >
             {options.map((option, index) => {
-              const listItemId = `option_${index}`;
+              const listItemId = generateOptionId(index);
               return (
                 <li
                   onClick={() => {
