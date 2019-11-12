@@ -12,4 +12,5 @@
 For now, this is a list of all the components. Eventually, this might be a guide on how to use these components.
 
 - [Button](./Button)
+- [Dialog](./Dialog)
 - [Listbox](./Listbox)
