@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Dialog } from "./components";
+import { Dialog, Button } from "./components";
 
-const App = () => (
-  <div style={{ maxWidth: 600, margin: "0 auto" }}>
-    <Dialog />
-  </div>
-);
+const App = () => {
+  const [showDialog, setShowDialog] = useState(false);
+
+  return (
+    <div>
+      <Button
+        onClick={() => {
+          if (!showDialog) {
+            setShowDialog(true);
+          }
+        }}
+      >
+        Open Dialog
+      </Button>
+      {showDialog && (
+        <Dialog
+          closeDialog={() => {
+            setShowDialog(false);
+          }}
+        />
+      )}
+    </div>
+  );
+};
 
 export default App;

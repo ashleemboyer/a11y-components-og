@@ -1,0 +1,41 @@
+#dialog-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #37474fdd;
+}
+
+#dialog {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  height: 50vh;
+  width: 50vw;
+  border-radius: 12px;
+}
+
+#dialog > div {
+  padding: 20px;
+}
+
+#dialog-header h2 {
+  margin: 0;
+}
+
+#dialog-body {
+  flex-grow: 1;
+}
+
+#dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#dialog-footer :not(:last-child) {
+  margin-right: 8px;
+}
