@@ -8,11 +8,11 @@ const App = () => (
     <Listbox
       label="Choose an element"
       options={[
-        { label: "one", value: 1 },
-        { label: "two", value: 2 },
-        { label: "three", value: 3 },
-        { label: "four", value: 4 },
-        { label: "five", value: 5 }
+        { name: "one", value: 1 },
+        { name: "two", value: 2 },
+        { name: "three", value: 3 },
+        { name: "four", value: 4 },
+        { name: "five", value: 5 }
       ]}
     />
   </div>

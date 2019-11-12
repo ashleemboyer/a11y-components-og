@@ -5,7 +5,7 @@ import { Button } from "..";
 
 import "./Listbox.css";
 
-const getIndexOfOption = ({ element, label }) => {
+const getIndexOfOption = element => {
   const testString = "option_";
   if (element.id.startsWith(testString)) {
     return +element.id.substring(testString.length);
@@ -61,7 +61,7 @@ const Listbox = ({ options, label }) => {
           >
             {
               options[indexOfSelectedOption === -1 ? 0 : indexOfSelectedOption]
-                .label
+                .name
             }
           </button>
           <ul
@@ -91,7 +91,7 @@ const Listbox = ({ options, label }) => {
                   role="option"
                   aria-selected={index === indexOfSelectedOption}
                 >
-                  {option.label}
+                  {option.name}
                 </li>
               );
             })}
@@ -105,7 +105,7 @@ const Listbox = ({ options, label }) => {
 Listbox.propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
-      label: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
       value: PropTypes.any.isRequired
     })
   ).isRequired,
