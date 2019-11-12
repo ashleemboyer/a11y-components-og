@@ -1,0 +1,97 @@
+.listbox-area {
+  padding: 20px;
+  background: #eee;
+  border: 1px solid #aaa;
+  font-size: 0;
+}
+
+.left-area {
+  display: inline-block;
+  font-size: 1rem;
+  vertical-align: top;
+  width: 50%;
+  padding-right: 10px;
+}
+
+[role="listbox"] {
+  padding: 0;
+  background: white;
+  border: 1px solid #aaa;
+}
+
+[role="option"] {
+  display: block;
+  padding: 0 1em 0 1.5em;
+  position: relative;
+  line-height: 1.8;
+  cursor: pointer;
+}
+
+[role="option"].focused {
+  background: #bde4ff;
+}
+
+[role="option"][aria-selected="true"]::before {
+  content: "✓";
+  position: absolute;
+  left: 0.5em;
+  color: green;
+}
+
+#exp_wrapper {
+  position: relative;
+}
+
+#exp_elem {
+  display: block;
+  margin-bottom: 4px;
+}
+
+#exp_button {
+  border: 1px solid grey;
+  border-radius: 6px;
+  font-size: 1rem;
+  text-align: left;
+  padding: 5px 10px;
+  width: 160px;
+  position: relative;
+}
+
+#exp_button::after {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid grey;
+  content: " ";
+  position: absolute;
+  right: 6px;
+  top: 10px;
+}
+
+#exp_button[aria-expanded="true"]::after {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 0;
+  border-bottom: 8px solid grey;
+  content: " ";
+  position: absolute;
+  right: 6px;
+  top: 10px;
+}
+
+#exp_elem_list {
+  border: 1px solid grey;
+  border-radius: 4px;
+  max-height: 10em;
+  overflow-y: auto;
+  position: absolute;
+  margin: 0;
+  width: 160px;
+}
+
+.hidden {
+  display: none;
+}
