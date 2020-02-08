@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
 import { Button } from "../";
 import "./Dialog.css";
 
@@ -85,6 +86,27 @@ const Dialog = ({
       </div>
     </div>
   );
+};
+
+Dialog.propTypes = {
+  title: PropTypes.string.isRequired,
+  closeDialog: PropTypes.func.isRequired,
+  openerRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+  ]).isRequired,
+  primaryButton: PropTypes.shape({
+    text: PropTypes.string,
+    onClick: PropTypes.func
+  }).isRequired,
+  secondaryButton: PropTypes.shape({
+    text: PropTypes.string,
+    onClick: PropTypes.func
+  }),
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired
 };
 
 export default Dialog;
