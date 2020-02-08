@@ -19,21 +19,21 @@
   border-radius: 12px;
 }
 
-#dialog > div {
-  padding: 20px;
-}
-
 #dialog-header h2 {
   margin: 0;
+  padding: 20px;
 }
 
 #dialog-body {
   flex-grow: 1;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 #dialog-footer {
   display: flex;
   justify-content: flex-end;
+  padding: 20px;
 }
 
 #dialog-footer :not(:last-child) {
