@@ -4,9 +4,15 @@ button {
   font-weight: bold;
   font-size: 1.2rem;
   padding: 8px 10px;
+  border-radius: 4px;
 }
 
 button:hover {
   cursor: pointer;
   background-color: #eee;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0px 0px 0px 3px #c2185b;
 }
