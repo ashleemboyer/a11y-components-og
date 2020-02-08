@@ -2,7 +2,14 @@ import React, { useState, useEffect, useRef } from "react";
 import { Button } from "../";
 import "./Dialog.css";
 
-const Dialog = ({ title, closeDialog, openerRef, children }) => {
+const Dialog = ({
+  title,
+  closeDialog,
+  openerRef,
+  primaryButton,
+  secondaryButton,
+  children
+}) => {
   const dialogRef = useRef();
   const [listenersAdded, setListenersAdded] = useState(false);
 
@@ -64,8 +71,16 @@ const Dialog = ({ title, closeDialog, openerRef, children }) => {
         </div>
         <div id="dialog-body">{children}</div>
         <div id="dialog-footer">
-          <Button onClick={close}>Cancel</Button>
-          <Button onClick={close}>Confirm</Button>
+          {secondaryButton && (
+            <Button onClick={secondaryButton.onClick}>
+              {secondaryButton.text}
+            </Button>
+          )}
+          {primaryButton && (
+            <Button onClick={primaryButton.onClick}>
+              {primaryButton.text}
+            </Button>
+          )}
         </div>
       </div>
     </div>
