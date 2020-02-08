@@ -1,24 +1,54 @@
-import React from "react";
+import React, { useState, useRef } from "react";
+import { Dialog, Button } from "./components";
 
-import { Listbox } from "./components";
+const App = () => {
+  const openDialogRef = useRef();
+  const [showDialog, setShowDialog] = useState(false);
 
-const App = () => (
-  <div style={{ maxWidth: 600, margin: "0 auto" }}>
-    <h1>{"Currently showing the <Listbox> component"}</h1>
-    <Listbox
-      label="Choose an element"
-      options={[
-        { name: "one", value: 1 },
-        { name: "two", value: 2 },
-        { name: "three", value: 3 },
-        { name: "four", value: 4 },
-        { name: "five", value: 5 }
-      ]}
-      onChange={value => {
-        console.log("Value is...", value);
-      }}
-    />
-  </div>
-);
+  return (
+    <div>
+      <Button
+        providedRef={openDialogRef}
+        onClick={() => {
+          if (!showDialog) {
+            setShowDialog(true);
+          }
+        }}
+      >
+        Open Dialog
+      </Button>
+      <Button onClick={() => {}}>Hi</Button>
+      <Button onClick={() => {}}>I'm a Button</Button>
+      {showDialog && (
+        <Dialog
+          title="Hello, Dialog!"
+          openerRef={openDialogRef}
+          primaryButton={{
+            text: "Okie dokie",
+            onClick: () => {
+              setShowDialog(false);
+            }
+          }}
+          secondaryButton={{
+            text: "Nope",
+            onClick: () => {
+              console.log("clicked nope");
+            }
+          }}
+          closeDialog={() => {
+            setShowDialog(false);
+          }}
+        >
+          <p>This is the body of the dialog.</p>
+          <ul>
+            <li>"Cancel" closes the dialog</li>
+            <li>"Confirm" also closes the dialog</li>
+          </ul>
+          <Button onClick={() => {}}>This is a random button</Button>
+        </Dialog>
+      )}
+    </div>
+  );
+};
 
 export default App;

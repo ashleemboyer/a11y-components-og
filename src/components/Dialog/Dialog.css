@@ -1,0 +1,41 @@
+#dialog-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #37474fdd;
+}
+
+#dialog {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+  width: 100%;
+  margin: 24px;
+  border-radius: 12px;
+  max-width: 600px;
+}
+
+#dialog-header h2 {
+  margin: 0;
+  padding: 20px;
+}
+
+#dialog-body {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#dialog-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+#dialog-footer :not(:last-child) {
+  margin-right: 8px;
+}

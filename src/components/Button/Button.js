@@ -3,8 +3,9 @@ import PropTypes from "prop-types";
 
 import "./Button.css";
 
-const Button = ({ children, onClick }) => {
-  const buttonRef = useRef(null);
+const Button = ({ children, onClick, providedRef }) => {
+  const defaultRef = useRef(null);
+  const buttonRef = providedRef || defaultRef;
 
   return (
     <button
