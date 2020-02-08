@@ -14,9 +14,10 @@
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
-  height: 50vh;
-  width: 50vw;
+  width: 100%;
+  margin: 24px;
   border-radius: 12px;
+  max-width: 600px;
 }
 
 #dialog-header h2 {
@@ -25,7 +26,6 @@
 }
 
 #dialog-body {
-  flex-grow: 1;
   padding-left: 20px;
   padding-right: 20px;
 }
