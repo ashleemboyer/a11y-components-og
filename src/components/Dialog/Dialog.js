@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { Button } from "../";
 import "./Dialog.css";
 
-const Dialog = ({ closeDialog, openerRef }) => {
+const Dialog = ({ title, closeDialog, openerRef, children }) => {
   const dialogRef = useRef();
   const [listenersAdded, setListenersAdded] = useState(false);
 
@@ -60,16 +60,9 @@ const Dialog = ({ closeDialog, openerRef }) => {
         ref={dialogRef}
       >
         <div id="dialog-header">
-          <h2 id="dialog-label">Dialog title</h2>
+          <h2 id="dialog-label">{title}</h2>
         </div>
-        <div id="dialog-body">
-          <p>This is the body of the dialog.</p>
-          <ul>
-            <li>"Cancel" closes the dialog</li>
-            <li>"Confirm" also closes the dialog</li>
-          </ul>
-          <button>This is a random button</button>
-        </div>
+        <div id="dialog-body">{children}</div>
         <div id="dialog-footer">
           <Button onClick={close}>Cancel</Button>
           <Button onClick={close}>Confirm</Button>
